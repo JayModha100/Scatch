@@ -1,20 +1,24 @@
 const mongoose = require('mongoose');
-const connectDb = async() => 
-{  
-  for(let i = 0 ; i < 3 ; i++)
-  {
-    try{
-      await mongoose.connect("mongodb://127.0.0.1:27017/test");
-      console.log("Connected to MongoDB");
+const dbgr = require('debug')('development:mongoose');
+
+const connectDb = async () => {  
+  const uri = 
+    "mongodb://admin:password@localhost:27017/test?authSource=admin";
+  
+  for (let i = 0; i < 3; i++) {
+    try {
+      await mongoose.connect(uri);
+      dbgr("Connected to MongoDB");
       break;
+    } catch (err) {
+      dbgr(`Attempt ${i + 1} failed: ${err.message}`);
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (i === 2) {
+        dbgr("Failed to connect to MongoDB after 3 attempts");
+        process.exit(1);
+      }
+    }
   }
-    catch(err){
-      console.error(`failed to connect in ${i + 1} attempts`);
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      if(i === 2){
-        console.error("Failed to connect to MongoDB after 3 attempts");
-        process.exit(1);}
-  }
-  }
-}
+};
+
 module.exports = connectDb;
