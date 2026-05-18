@@ -1,11 +1,9 @@
-import mongoose from "mongoose"
-
+const mongoose = require('mongoose');
 const Ownermodel = mongoose.model("Owner", new mongoose.Schema({
   name: {
     type: String,
     trim: true,
-    minLength : 3,
-    
+    minLength : 3, 
   },
   email: String,
   password: String,

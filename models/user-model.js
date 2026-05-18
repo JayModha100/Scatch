@@ -1,18 +1,16 @@
-import mongoose from "mongoose"
+const mongoose = require('mongoose');
 
-const Usermodel = mongoose.model("User", new mongoose.Schema({
+const userModel = mongoose.model("User", new mongoose.Schema({
   name: {
     type: String,
     trim: true,
-    minLength : 3,
-    
+    minLength : 3, 
   },
   email: String,
   password: String,
   cart : [],
-  isAdmin : Boolean,
   orders : [],
   contact : Number,
-  picture : Buffer
+  picture : String
 }))
-module.exports = Usermodel
+module.exports = userModel

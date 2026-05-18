@@ -11,14 +11,15 @@ if(process.env.NODE_ENV === 'development') {
       .send("You don't have permission to create more than one owner");
   });
 
-  let createdOwner = await OwnerModel.create({
+  router.post('/create', async (req, res) => {
+    let createdOwner = await OwnerModel.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password
     });
     res.status(201).json({createdOwner});
-  }
-
+  });
+}
   router.get('/owners', (req, res) => {
   res.send('Owners route');
 });
