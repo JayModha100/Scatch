@@ -65,19 +65,6 @@ Scatch is a backend-focused e-commerce application built to learn real-world bac
 * express-session
 * connect-flash
 
-## Future Improvements
-
-* Product CRUD Operations
-* Cart & Order System
-* Validation Layer (Joi/Zod)
-* Centralized Error Handling
-* Role-Based Access Control
-* Cloud Image Uploads
-* Deployment & CI/CD
-* Inventory & Concurrency Handling
-* Search & Filtering System
-* Analytics Dashboard
-
 ## Learning Goals Behind This Project
 
 This project was built to transition from tutorial dependency toward independent backend engineering by understanding:
