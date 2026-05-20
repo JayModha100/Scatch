@@ -18,8 +18,11 @@ if(process.env.NODE_ENV === 'development') {
     res.status(201).json({createdOwner});
 });
 }
-  router.get('/owners', (req, res) => {
-  res.send('Owners route');
+  router.get('/admin', (req, res) => {
+
+   res.render("createproducts", {
+      success: ""
+   });
 });
 
 module.exports = router;
